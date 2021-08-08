@@ -1,0 +1,20 @@
+[package]
+name = "ml"
+version = "0.1.0"
+authors = ["florianvazelle <ponythugflorian@gmail.com>"]
+description = "Minimalist framework for machine learning"
+edition = "2018"
+
+repository = "https://github.com/florianvazelle/ml/"
+readme = "README.md"
+
+keywords = ["machine-learning", "ai", "ml"]
+
+exclude = [".github/"]
+
+[workspace]
+members = ["crates/*"]
+
+[[example]]
+name = "ml_anime"
+path = "examples/ml_anime"
