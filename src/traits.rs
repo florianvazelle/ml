@@ -1,11 +1,6 @@
-use super::{DatasetBase, Records};
+use crate::matrix::Matrix;
 
-pub trait Fit<'a, R: Records, T> {
-    type Object: 'a;
-
-    fn fit(&self, dataset: &DatasetBase<R, T>) -> Self::Object;
-}
-
-pub trait Predict<R: Records, T> {
-    fn predict(&self, x: R) -> T;
+pub trait Model {
+    fn train(&mut self, train_inputs: &Matrix, train_outputs: &Matrix);
+    fn predict(&self, inputs: &Matrix, outputs: &mut Matrix);
 }

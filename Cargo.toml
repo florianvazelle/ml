@@ -13,8 +13,6 @@ keywords = ["machine-learning", "ai", "ml"]
 exclude = [".github/"]
 
 [workspace]
-members = ["crates/*"]
-
-[[example]]
-name = "ml_anime"
-path = "examples/ml_anime"
+members = [
+    "crates/ml_linear"
+]
