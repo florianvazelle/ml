@@ -45,6 +45,10 @@ impl Model for LinearRegression {
         // .completeOrthogonalDecomposition()
         // .pseudoInverse();
 
+        let qr = tmp.qr();
+        let (q, r) = (qr.0.transpose(), qr.1);
+        //let x = r.try_inverse().unwrap() * &q * &b;
+
         // Compute weights
         let w = inv_inputs_transposed
             .mul(&inputs_transposed)
