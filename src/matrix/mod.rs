@@ -1,12 +1,11 @@
 //! Matrix structure.
 
+mod base;
 mod cmp;
 mod fmt;
 mod idx;
-mod inv;
 mod iter;
 mod linalg;
-mod matrix;
 mod ops;
 
 #[derive(Clone, Debug)]

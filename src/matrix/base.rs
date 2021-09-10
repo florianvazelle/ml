@@ -19,6 +19,7 @@ impl Matrix {
         self.rows == self.cols
     }
 
+    #[inline]
     pub fn column(&self, j: usize) -> Matrix {
         let (rows, _) = self.shape();
 
@@ -34,6 +35,7 @@ impl Matrix {
         }
     }
 
+    #[inline]
     pub fn round(&self, decimal: i32) -> Matrix {
         let (rows, cols) = self.shape();
         let factor = 10.0_f64.powi(decimal);
@@ -42,6 +44,7 @@ impl Matrix {
         Matrix { rows, cols, data }
     }
 
+    #[inline]
     pub fn sqrt(&self) -> Matrix {
         let (rows, cols) = self.shape();
         let data = self.iter().map(|l| l.sqrt()).collect();
@@ -50,6 +53,7 @@ impl Matrix {
     }
 
     /// Transposes `self` and store the result into `out`.
+    #[inline]
     pub fn transpose(&self) -> Matrix {
         let mut out = Matrix::new(self.cols, self.rows);
         for i in 0..self.rows {
@@ -61,6 +65,7 @@ impl Matrix {
     }
 
     /// Add a column
+    #[inline]
     pub fn column_stack(&self, other: &Self) -> Matrix {
         let mut mat1 = self.clone();
         let mut mat2 = other.clone();
