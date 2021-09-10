@@ -42,26 +42,33 @@ mod tests {
 
     #[test]
     fn colum() {
-        let mut matrix = Matrix::new(3, 3);
-        matrix.data = vec![1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0];
+        let mut matrix = Matrix::new(4, 3);
+        matrix.data = vec![
+            1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0,
+        ];
 
-        let mut excepted = Matrix::new(1, 3);
+        let mut excepted = Matrix::new(4, 1);
 
-        excepted.data = vec![1.0, 1.0, 0.0];
+        excepted.data = vec![1.0, 4.0, 7.0, 10.0];
         assert_eq!(matrix.column(0), excepted);
-        excepted.data = vec![1.0, 0.0, 1.0];
+        excepted.data = vec![2.0, 5.0, 8.0, 11.0];
         assert_eq!(matrix.column(1), excepted);
-        excepted.data = vec![0.0, 1.0, 1.0];
+        excepted.data = vec![3.0, 6.0, 9.0, 12.0];
         assert_eq!(matrix.column(2), excepted);
     }
 
     #[test]
     fn colum_mul() {
-        let mut matrix = Matrix::new(3, 3);
-        matrix.data = vec![1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0];
+        let mut matrix = Matrix::new(4, 3);
+        matrix.data = vec![
+            1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0,
+        ];
 
-        let mut excepted = Matrix::new(1, 1);
-        excepted.data = vec![2.0];
+        let mut excepted = Matrix::new(4, 4);
+        excepted.data = vec![
+            1.0, 4.0, 7.0, 10.0, 4.0, 16.0, 28.0, 40.0, 7.0, 28.0, 49.0, 70.0, 10.0, 40.0, 70.0,
+            100.0,
+        ];
 
         assert_eq!(
             &matrix.column(0) * &(matrix.column(0).transpose()),
@@ -100,8 +107,6 @@ mod tests {
         matrix.data = vec![1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0];
 
         let (q, r) = matrix.qr();
-        // println!("Q = \n{}", q);
-        println!("R = \n{}", r);
 
         let mut expected_q = Matrix::new(3, 3);
         expected_q.data = vec![
@@ -121,11 +126,8 @@ mod tests {
     fn qr_2() {
         let mut matrix = Matrix::new(2, 3);
         matrix.data = vec![1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
-        println!("{}", matrix);
 
         let (q, r) = matrix.qr();
-        // println!("Q = \n{}", q);
-        println!("R = \n{}", r);
 
         let mut expected_q = Matrix::new(2, 3);
         expected_q.data = vec![0.242536, 0.970143, 0.894427, 0.970143, -0.242536, -0.447214];
